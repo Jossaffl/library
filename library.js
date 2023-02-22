@@ -18,14 +18,21 @@ function AddBook(book) {
   library.push(book);
 }
 
-function creator(element) {
+function creator(element) { // creates div for entry, adds it to main content div//
   const div = document.createElement('div');
   div.classList.add('book');
   bookContainer.appendChild(div);
   div.innerHTML = `${element.tittle}<br>${element.author}<br>${element.process}`;
+  const xButton = document.createElement('button');
+  xButton.textContent = 'x';
+  xButton.classList.add('xbutton');
+  xButton.addEventListener('click', (e) => {
+    xButton.parentNode.remove();
+  });
+  div.appendChild(xButton);
 }
 
-button.addEventListener('click', (e) => {
+button.addEventListener('click', (e) => { // creates object, resets information on camps and calls div creator function
   if (tittleName.value === '' || authorName.value === '' || boxValue === '') {
     errorBox.textContent = 'Please fill all camps';
     e.preventDefault();
